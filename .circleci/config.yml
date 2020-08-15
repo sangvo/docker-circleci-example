@@ -10,7 +10,7 @@ executors:
           BUNDLE_RETRY: 3
           BUNDLER_VERSION: 2.0.1
           RAILS_ENV: test
-      - image: circleci/mysql:5.7-ram
+      - image: circleci/mysql:5.7
         command: [--default-authentication-plugin=mysql_native_password]
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
