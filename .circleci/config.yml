@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: circleci/ruby:2.6.3
+      - image: circleci/ruby:2.6.3-node
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_PATH: vendor/bundle
@@ -44,7 +44,7 @@ jobs:
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
       - run:
           name: Setup DB
-          command: bundle exec rails db:create db:schema:load --trace
+          command: bundle exec rails db:setup --trace
       - save_cache:
           key: rails_demo_bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
