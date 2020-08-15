@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     "Hello world"
   end
 
-  def limit_request
+  def limit_request!
     "Limit"
   end
 end
