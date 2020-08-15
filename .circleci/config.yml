@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.0
 
 executors:
   default:
@@ -29,9 +29,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - rails_demo_bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          - rails_demo_bundler-
+          keys:
+            - rails_demo_bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - rails_demo_bundler-
       - configure_bundler
       - run:
           name: Install bundle
