@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   end
 
   def limit_request!
-    "Limit"
+    "Limit AAA"
   end
 end
