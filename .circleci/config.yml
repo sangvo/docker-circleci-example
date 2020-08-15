@@ -48,7 +48,7 @@ jobs:
             - vendor/bundle
 
   workflows:
-    version: 2
-      integration:
-        jobs:
-          - build
+    build_and_test:
+      jobs:
+        - build
+
