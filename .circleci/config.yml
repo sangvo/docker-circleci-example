@@ -2,19 +2,18 @@ version: 2.1
 
 executors:
   default:
-    working_directory: ~/rails_demo_bundler
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: circleci/ruby:2.6.3
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLE_RETRY: 3
           BUNDLER_VERSION: 2.0.1
           RAILS_ENV: test
-      - image: circleci/mysql:8.0.18
+      - image: circleci/mysql:5.7-ram
         command: [--default-authentication-plugin=mysql_native_password]
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
 
 commands:
   configure_bundler:
@@ -50,10 +49,6 @@ jobs:
           key: rails_demo_bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - ./hix_mysql
 
 workflows:
   version: 2
