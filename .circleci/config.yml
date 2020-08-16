@@ -45,13 +45,16 @@ jobs:
       - run:
           name: Setup DB
           command: bundle exec rails db:setup --trace
+      - run:
+          name: Run Rubocop
+          command: bundle exec rubocop
+      - run:
+          name: Run Rspec
+          command: bundle exec rspec --format progress
       - save_cache:
           key: rails_demo_bundler-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run:
-          name: Run Rubocop
-          command: bundle exec rubocop
 
 workflows:
   version: 2
